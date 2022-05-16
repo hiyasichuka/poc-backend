@@ -23,7 +23,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - run: npm ci
+      - run: rm -rf node_modules && yarn install --frozen-lockfile
       - run: npx prisma generate
       - run: npx prisma migrate deploy
-      - run: npm run test
+      - run: yarn test
